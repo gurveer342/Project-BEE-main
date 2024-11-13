@@ -86,7 +86,6 @@ app.post('/profile', upload.single('avatar'), async (req, res) => {
     }
 });
 
-g
 
 // Error handling middleware
 app.use(errorHandler);
