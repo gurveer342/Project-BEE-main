@@ -21,7 +21,6 @@ app.set('view engine', 'hbs');
 app.set('views', path.join(__dirname, 'views'));
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
-
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cors());
@@ -53,6 +52,10 @@ app.get("/home", async (req, res) => {
     });
 });
 
+app.use("/api/newsletter", require("./routes/newsletterRoutes"));
+
+app.use("/api/doctor", require("./routes/doctorsDetails"));
+
 // All users route (Assuming 'users' is defined somewhere)
 app.get("/alluser", (req, res) => {
     const users = []; // Replace with actual users array
@@ -60,7 +63,6 @@ app.get("/alluser", (req, res) => {
         users: users, 
     });
 });
-
 
 app.use("/api/user", require("./routes/userRoutes")); // Registration route
 app.use("/api/doctors", require("./routes/doctorRoutes"));
@@ -85,7 +87,6 @@ app.post('/profile', upload.single('avatar'), async (req, res) => {
         res.status(500).send("Error uploading file.");
     }
 });
-
 
 // Error handling middleware
 app.use(errorHandler);

@@ -11,4 +11,9 @@ router.post("/register", registerUser);
 // Route to login a user
 router.post("/login",loginUser);
 
+//Router for user login(Public route)
+router.post("/login", loginuser);
+
+//Route for getting the current user's profile
+
 module.exports = router;
